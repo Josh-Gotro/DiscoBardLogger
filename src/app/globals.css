@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+:root {
+  --font-geist-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-geist-mono: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  --background: #f5f6ef;
+  --foreground: #1f222a;
+  --card: #fffffb;
+  --muted: #4f566a;
+  --line: #d7d7cf;
+  --accent: #115f73;
+  --accent-2: #f39237;
+  --danger: #b03a2e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.page-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(130% 120% at 10% -10%, #d9f0fb 0%, transparent 50%),
+    radial-gradient(100% 80% at 90% 0%, #ffe6cc 0%, transparent 46%);
+}
+
+.dashboard {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero {
+  background: color-mix(in oklab, var(--card) 92%, white 8%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.hero h1 {
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1.15;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 65ch;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.oauth-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hero-actions {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.secondary-button {
+  background: white;
+  color: var(--foreground);
+  border-color: var(--line);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.panel h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.controls-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: end;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+input,
+select,
+button {
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.95rem;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 0.75rem;
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.status-copy {
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status-idle {
+  background: #eaecf0;
+  color: #344054;
+}
+
+.status-pending {
+  background: #fff1cc;
+  color: #975a16;
+}
+
+.status-completed {
+  background: #d8f4dc;
+  color: #23653b;
+}
+
+.status-failed,
+.status-expired {
+  background: #fde2df;
+  color: #8d2d22;
+}
+
+.status-message {
+  color: var(--muted);
+}
+
+.report-summary {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.benchmark-grid {
+  align-items: end;
+}
+
+.benchmark-list {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.table-shell {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-size: 0.85rem;
+  padding: 0.48rem 0.55rem;
+}
+
+th {
+  background: #f6f7f4;
+}
+
+.comparison-results {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.stats-grid article {
+  background: #fcfcf8;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.stats-grid h3 {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.timeline-grid {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.timeline-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fcfcf8;
+  padding: 0.7rem;
+}
+
+.timeline-panel h4 {
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+
+.timeline-track {
+  position: relative;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background-image: repeating-linear-gradient(
+    to right,
+    #f8f9f5 0,
+    #f8f9f5 20px,
+    #f2f3ed 20px,
+    #f2f3ed 40px
+  );
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 8px;
+  width: 5px;
+  height: 26px;
+  border-radius: 99px;
+  transform: translateX(-50%);
+  opacity: 0.88;
+}
+
+.timeline-meta {
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.insights-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.insights-grid article {
+  border: 1px solid var(--line);
+  background: #fcfcf8;
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.insights-grid h3 {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.insights-grid ul {
+  list-style: disc;
+  margin-left: 1rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (max-width: 840px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-actions,
+  .oauth-link,
+  .secondary-button {
+    width: 100%;
+  }
+}
